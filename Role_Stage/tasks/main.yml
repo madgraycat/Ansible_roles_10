@@ -1,0 +1,32 @@
+---
+# tasks file for Role_Stage
+- name: install maven, java, git
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - git
+    - maven
+    - default-jdk
+    - docker.io
+    - python-pip
+- name: create dir for project
+  file:
+    path: "{{ app_data}}"
+    state: directory
+- name: clone project
+  git:
+    repo: "{{ repository }}"
+    dest: "{{ app_data }}"
+- name: docker
+  shell:
+    pip install docker
+- name: Build image
+  become: yes
+  become_method: sudo
+  docker_image:
+    name: gato
+    tag: gato01
+    path: files
+    state: present
+

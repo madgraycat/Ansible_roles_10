@@ -1,0 +1,12 @@
+---
+# tasks file for Role_WEB
+- name: install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - tomcat8
+- name: tomcat8 is started
+  service:
+    name: tomcat8
+    state: started

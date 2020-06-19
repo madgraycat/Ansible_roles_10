@@ -1,0 +1,4 @@
+---
+# defaults file for Role_Stage
+app_data: /tmp/app_data
+repository: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git

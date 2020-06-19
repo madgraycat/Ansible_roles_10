@@ -1,0 +1,3 @@
+---
+# defaults file for Role_WEB
+dest_folder: /var/lib/tomcat8/webapps

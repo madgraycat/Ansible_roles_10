@@ -1,0 +1,22 @@
+---
+- name: deploy web server
+  hosts: WEB
+  become: yes
+  roles:
+    - Role_WEB
+
+- name: Stage server
+  hosts: STAGE
+  become: yes
+  roles:
+    - Role_Stage
+###################################
+#- name: build app
+#  include_vars:
+#    file: /home/ubuntu/project/Role_Stage/defaults/main.yml
+#  hosts: STAGE
+#  become: yes
+#  tasks:
+#    - name: build app
+#      command:
+#        "mvn package -f {{ app_data }}

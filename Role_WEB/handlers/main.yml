@@ -1,0 +1,6 @@
+---
+# handlers file for Role_WEB
+- name: restart tomcat
+  service:
+    name: tomcat8
+    state: restarted
