@@ -1,2 +1,12 @@
 ---
 # tasks file for Role_DockerServer
+- name: install packages
+  apt:
+    name: {{ item }}
+    state: present
+    update_cache: yes
+  with_ items:
+    - python-pip
+- name: install docker
+  shell:
+    pip install docker

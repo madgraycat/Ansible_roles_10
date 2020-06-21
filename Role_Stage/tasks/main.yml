@@ -8,8 +8,6 @@
     - git
     - maven
     - default-jdk
-    - docker.io
-    - python-pip
 - name: create dir for project
   file:
     path: "{{ app_data}}"
@@ -18,14 +16,4 @@
   git:
     repo: "{{ repository }}"
     dest: "{{ app_data }}"
-- name: docker
-  shell:
-    pip install docker
-- name: Build image
-  become: yes
-  docker_image:
-    name: gato
-    tag: gato01
-    path: files
-    state: present
 
