@@ -1,0 +1,28 @@
+---
+# tasks file for Role_DockerServer
+- name: install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - python-pip
+    - docker.io
+- name: install docker
+  shell:
+    pip install docker
+- name: Build docker image
+  docker_image:
+    name: gato_container
+    path: /docker/
+    state: build
+- name: Log into DockerHub
+  docker_login:
+    username: "{{ login }}"
+    password: "{{ password }}"
+    email: dgolovkin@protonmail.com
+- name: Tag and push to docker hub
+  docker_image:
+    name: gato_container
+    repository: madgraycat/test1
+    tag: latest
+    push: yes

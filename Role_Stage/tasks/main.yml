@@ -8,8 +8,6 @@
     - git
     - maven
     - default-jdk
-    - docker.io
-    - python-pip
 - name: create dir for project
   file:
     path: "{{ app_data}}"
@@ -18,15 +16,13 @@
   git:
     repo: "{{ repository }}"
     dest: "{{ app_data }}"
-- name: docker
+- name: create app
   shell:
-    pip install docker
-- name: Build image
+    mvn package -f {{ app_data }}
+- name: copy app to Web server
   become: yes
-  become_method: sudo
-  docker_image:
-    name: gato
-    tag: gato01
-    path: files
-    state: present
-
+  synchronize:
+    src: "{{ app_data }}/target/hello-1.0.war"
+    dest: "{{ dest_folder_tomcat8 }}"
+    mode: pull
+  delegate_to: WEB_01

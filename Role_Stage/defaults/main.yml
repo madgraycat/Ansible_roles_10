@@ -2,3 +2,4 @@
 # defaults file for Role_Stage
 app_data: /tmp/app_data
 repository: https://github.com/boxfuse/boxfuse-sample-java-war-hello.git
+dest_folder_tomcat8: /var/lib/tomcat8/webapps
