@@ -8,3 +8,8 @@
 - name: install docker
   shell:
     pip install docker
+- name: Build docker image
+  docker_image:
+    name: gato_container
+    path: /docker
+    state: build
