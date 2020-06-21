@@ -22,5 +22,5 @@
 - name: copy app to Web server
   synchronize:
     src: "{{ app_data }}/target/hello-1.0.war"
-    dest: rsync://172.31.35.248{{ dest_folder_tomcat8 }}
+    dest: rsync://172.31.45.153{{ dest_folder_tomcat8 }}
   delegate_to: WEB_01
