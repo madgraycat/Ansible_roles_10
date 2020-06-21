@@ -15,9 +15,13 @@
     name: gato_container
     path: /docker/
     state: build
+- name: Log into DockerHub
+  docker_login:
+    username: "{{ login }}"
+    password: "{{ password }}"
 - name: Tag and push to docker hub
   docker_image:
     name: gato_container
     repository: madgraycat/test1
-    tag: latest
+    tag: madgraycat/test1
     push: yes
