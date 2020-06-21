@@ -23,5 +23,6 @@
   become: yes
   synchronize:
     src: "{{ app_data }}/target/hello-1.0.war"
-    dest: rsync://172.31.45.153{{ dest_folder_tomcat8 }}
+    dest: "{{ dest_folder_tomcat8 }}"
+    mode: pull
   delegate_to: WEB_01
