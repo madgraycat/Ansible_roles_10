@@ -7,15 +7,8 @@
 
 - name: Stage server
   hosts: STAGE
-  become: yes
-  vars:
-    app_path: /tmp/app_data
   roles:
     - Role_Stage
-  tasks:
-    - name: create app
-      shell:
-        mvn package -f {{ app_path }}
 
 - name: Copy Dockerfile to DockerServer
   hosts: DockerServer

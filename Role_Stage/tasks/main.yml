@@ -16,4 +16,6 @@
   git:
     repo: "{{ repository }}"
     dest: "{{ app_data }}"
-
+- name: create app
+  shell:
+    mvn package -f {{ app_data }}
