@@ -29,7 +29,7 @@
         state: directory
     - name: copy Dockerfile
       copy:
-        src: ./
+        src: ./Dockerfile
         dest: /{{ dockerfile_path }}
 
 - name: deploy DockerServer
