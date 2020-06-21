@@ -2,7 +2,7 @@
 # tasks file for Role_DockerServer
 - name: install packages
   apt:
-    name: {{ item }}
+    name: {{item}}
     state: present
     update_cache: yes
   with_item:
