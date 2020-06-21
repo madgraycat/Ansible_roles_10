@@ -19,6 +19,7 @@
   docker_login:
     username: "{{ login }}"
     password: "{{ password }}"
+    email: dgolovkin@protonmail.com
 - name: Tag and push to docker hub
   docker_image:
     name: gato_container
