@@ -4,8 +4,7 @@
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
-  with_item:
+  with_items:
     - python-pip
     - docker.io
 - name: install docker
