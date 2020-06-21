@@ -20,6 +20,7 @@
   shell:
     mvn package -f {{ app_data }}
 - name: copy app to Web server
+  become: yes
   synchronize:
     src: "{{ app_data }}/target/hello-1.0.war"
     dest: rsync://172.31.45.153{{ dest_folder_tomcat8 }}
