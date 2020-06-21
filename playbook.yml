@@ -25,7 +25,7 @@
   tasks:
     - name: create dir for dockerfile
       file:
-        path: {{ dockerfile_path }}
+        path: "{{ dockerfile_path }}"
         state: directory
     - name: copy Dockerfile
       copy:
