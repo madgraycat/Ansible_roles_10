@@ -24,5 +24,5 @@
   docker_image:
     name: gato_container
     repository: madgraycat/test1
-    tag: 7.0
+    tag: latest
     push: yes
