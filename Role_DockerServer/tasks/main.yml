@@ -15,3 +15,9 @@
     name: gato_container
     path: /docker/
     state: build
+- name: Tag and push to docker hub
+  docker_image:
+    name: gato_container
+    repository: madgraycat/test1
+    tag: latest
+    push: yes
