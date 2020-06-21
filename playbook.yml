@@ -8,15 +8,34 @@
 - name: Stage server
   hosts: STAGE
   become: yes
+  vars:
+    app_path: /tmp/app_data
   roles:
     - Role_Stage
-###################################
-#- name: build app
-#  include_vars:
-#    file: /home/ubuntu/project/Role_Stage/defaults/main.yml
-#  hosts: STAGE
-#  become: yes
-#  tasks:
-#    - name: build app
-#      command:
-#        "mvn package -f {{ app_data }}
+  tasks:
+    - name: create app
+      shell:
+        mvn package -f {{ app_path }}
+
+- name: Copy Dockerfile to DockerServer
+  hosts: DockerServer
+  become: yes
+  vars:
+    dockerfile_path: /docker
+  tasks:
+    - name: create dir for dockerfile
+      file:
+        path: {{ dockerfile_path }}
+        state: directory
+    - name: copy Dockerfile
+      copy:
+        src: ./
+        dest: /{{ dockerfile_path }}
+
+- name: deploy DockerServer
+  hosts: DockerServer
+  become: yes
+  roles:
+    - Role_DockerServer
+
+

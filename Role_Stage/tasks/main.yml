@@ -23,7 +23,6 @@
     pip install docker
 - name: Build image
   become: yes
-  become_method: sudo
   docker_image:
     name: gato
     tag: gato01
