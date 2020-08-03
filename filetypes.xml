@@ -1,6 +1,7 @@
 <application>
   <component name="FileTypeManager" version="17">
     <extensionMap>
+      <mapping ext="d" type="PLAIN_TEXT" />
       <mapping pattern="WEB" type="YAML" />
     </extensionMap>
   </component>
